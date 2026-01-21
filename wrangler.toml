@@ -1,0 +1,30 @@
+# Cloudflare Pages Configuration
+# Documentation: https://developers.cloudflare.com/pages/platform/functions/
+
+name = "vibe-grade"
+compatibility_date = "2025-01-22"
+pages_build_output_dir = "dist"
+
+# Environment variables are set in Cloudflare Dashboard
+# Do not put sensitive values here
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[build.upload]
+format = "directory"
+dir = "dist"
+
+# Production environment
+[env.production]
+name = "vibe-grade-production"
+
+# Development/Staging environment
+[env.preview]
+name = "vibe-grade-preview"
+
+# Note: Environment variables should be set in Cloudflare Dashboard:
+# - NEON_DATABASE_URL
+# - GITHUB_TOKEN (optional, for higher API rate limits)
+# - JWT_SECRET
